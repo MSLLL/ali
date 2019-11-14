@@ -25,5 +25,44 @@
       <button class="btn btn-primary btn-block">登 录</button>
     </div>
   </div>
+<script src=" ../assets/vendors/jquery.min.js"></script>
+<script type="text/javascript">
+// 添加按钮
+$('#loginBtn').on('click',function(){
+  // 获取用户 输入地址
+  var email =$("password").val();
+  // 判断是否输入邮箱地址
+  if(email.trim().length ==0) {
+    alert('请输入邮箱');
+    return;
+  } 
+  $.ajax({
+    type: "post",
+    url: "/login",
+    data: {
+      email:email,
+      password:password
+
+    },
+    
+    success: function (response) {
+      // 登陆成功 跳转管理页面
+      location.href='index.html';
+      
+    },
+    error:function(){
+      // 登陆失败
+       alert('用户名门密码错误')
+    }
+  });
+
+})
+
+
+</script>
+
+
+
+
 </body>
 </html>
